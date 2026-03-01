@@ -30,3 +30,6 @@ dist-ssr
 
 # Claude/Antigravity skills (long paths break Windows)
 .antigravity-skills/
+
+# Playwright MCP test artifacts
+.playwright-mcp/

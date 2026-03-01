@@ -562,11 +562,14 @@ export default function ProgressPage() {
 
     const saved = await saveGalleryPhoto(photoEntry);
     if (saved) {
-      setGallery((prev) => [...prev, {
-        id: saved.id,
-        ...photoEntry,
-        uploadedAt: saved.uploaded_at,
-      }]);
+      setGallery((prev) => [
+        ...prev,
+        {
+          id: saved.id,
+          ...photoEntry,
+          uploadedAt: saved.uploaded_at,
+        },
+      ]);
     }
 
     // Award XP

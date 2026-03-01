@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Flame, Mail, Lock, Eye, EyeOff, LogIn, UserPlus, Github, Loader2 } from "lucide-react";
+import {
+  Flame,
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  LogIn,
+  UserPlus,
+  Github,
+  Loader2,
+} from "lucide-react";
 import { signUp, signIn, signInWithGitHub } from "../services/supabase";
 
 export default function AuthPage({ onAuth }) {
@@ -31,7 +41,9 @@ export default function AuthPage({ onAuth }) {
       if (mode === "signup") {
         const data = await signUp(email.trim(), password);
         if (data?.user?.identities?.length === 0) {
-          setError("An account with this email already exists. Try logging in.");
+          setError(
+            "An account with this email already exists. Try logging in.",
+          );
         } else if (data?.session) {
           // Auto-confirmed — proceed
           onAuth(data.session);
@@ -140,7 +152,9 @@ export default function AuthPage({ onAuth }) {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              autoComplete={mode === "signup" ? "new-password" : "current-password"}
+              autoComplete={
+                mode === "signup" ? "new-password" : "current-password"
+              }
               disabled={loading}
             />
             <button
@@ -202,7 +216,9 @@ export default function AuthPage({ onAuth }) {
             <div className="w-full border-t border-dark-600" />
           </div>
           <div className="relative flex justify-center text-xs">
-            <span className="bg-dark-900 px-3 text-gray-500">or continue with</span>
+            <span className="bg-dark-900 px-3 text-gray-500">
+              or continue with
+            </span>
           </div>
         </div>
 

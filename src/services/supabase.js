@@ -1,10 +1,10 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase environment variables!');
+  console.error("Missing Supabase environment variables!");
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
@@ -19,7 +19,9 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
  * Get current authenticated user ID
  */
 export async function getCurrentUserId() {
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   return user?.id || null;
 }
 
@@ -27,7 +29,9 @@ export async function getCurrentUserId() {
  * Get current session
  */
 export async function getSession() {
-  const { data: { session } } = await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
   return session;
 }
 
@@ -44,7 +48,10 @@ export async function signUp(email, password) {
  * Sign in with email + password
  */
 export async function signIn(email, password) {
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
   if (error) throw error;
   return data;
 }
@@ -54,7 +61,7 @@ export async function signIn(email, password) {
  */
 export async function signInWithGitHub() {
   const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'github',
+    provider: "github",
     options: {
       redirectTo: `${window.location.origin}${import.meta.env.BASE_URL}`,
     },
@@ -68,7 +75,7 @@ export async function signInWithGitHub() {
  */
 export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
+    provider: "google",
     options: {
       redirectTo: `${window.location.origin}${import.meta.env.BASE_URL}`,
     },

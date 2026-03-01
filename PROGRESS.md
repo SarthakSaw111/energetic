@@ -31,6 +31,7 @@
 ### ⚠️ CRITICAL: User Still Needs To Do These Steps
 
 #### Step 1: Run the SQL Schema in Supabase
+
 1. Go to https://supabase.com/dashboard → Select the "energetic" project
 2. Click **SQL Editor** in the left sidebar
 3. Click **New Query**
@@ -40,11 +41,13 @@
 7. You should see "Success. No rows returned" — that means all tables + policies created
 
 #### Step 2: Enable Email Auth (already default, but verify)
+
 1. In Supabase Dashboard → **Authentication** → **Providers**
 2. Make sure **Email** provider is enabled
 3. Optionally: Toggle off "Confirm email" for easier testing (Authentication → Settings → uncheck "Enable email confirmations")
 
 #### Step 3: (Optional) Enable GitHub OAuth
+
 1. Go to https://github.com/settings/developers → **OAuth Apps** → **New OAuth App**
 2. App name: `Energetic`
 3. Homepage URL: `https://SarthakSaw111.github.io/energetic`
@@ -54,11 +57,13 @@
 7. Enable it, paste Client ID and Client Secret, Save
 
 #### Step 4: Create GitHub Repo & Deploy
+
 1. Go to https://github.com/new
 2. Repository name: `energetic`
 3. Public or Private (both work with Pages)
 4. Don't initialize with README (we already have code)
 5. Run these commands:
+
 ```bash
 cd energetic
 git init
@@ -69,9 +74,11 @@ git branch -M main
 git push -u origin main
 npm run deploy
 ```
+
 6. Go to GitHub repo → **Settings** → **Pages** → Source should auto-detect `gh-pages` branch
 
 #### Step 5: Add Redirect URL to Supabase
+
 1. In Supabase Dashboard → **Authentication** → **URL Configuration**
 2. Add `https://SarthakSaw111.github.io/energetic/` to **Redirect URLs**
 
@@ -140,14 +147,14 @@ npm run deploy
 
 ### Auth & Supabase (NEW — Session 3)
 
-| File                        | Purpose                                                                 |
-| --------------------------- | ----------------------------------------------------------------------- |
-| `src/services/supabase.js`  | Supabase client init, auth functions (signUp, signIn, OAuth, signOut)   |
-| `src/store/db.js`           | All DB operations: profiles, logs, streak, XP, gallery, conversations   |
-| `src/pages/AuthPage.jsx`    | Login/Signup page with email + GitHub OAuth                             |
-| `supabase/schema.sql`       | Complete SQL schema (6 tables, RLS policies, storage bucket, indexes)   |
-| `.env`                      | VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, google_free_api_key         |
-| `.env.example`              | Template for required environment variables                              |
+| File                       | Purpose                                                               |
+| -------------------------- | --------------------------------------------------------------------- |
+| `src/services/supabase.js` | Supabase client init, auth functions (signUp, signIn, OAuth, signOut) |
+| `src/store/db.js`          | All DB operations: profiles, logs, streak, XP, gallery, conversations |
+| `src/pages/AuthPage.jsx`   | Login/Signup page with email + GitHub OAuth                           |
+| `supabase/schema.sql`      | Complete SQL schema (6 tables, RLS policies, storage bucket, indexes) |
+| `.env`                     | VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, google_free_api_key        |
+| `.env.example`             | Template for required environment variables                           |
 
 ---
 

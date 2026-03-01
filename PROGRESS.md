@@ -1,15 +1,17 @@
 # ENERGETIC — Build Progress & Continuation Guide
 
-## Status: SUPABASE MIGRATION COMPLETE — READY FOR SQL + DEPLOY ✅
+## Status: FULLY DEPLOYED & WORKING — v2.0.0 🔥
 
-**Last Updated:** Session 3  
-**App Status:** All code migrated from localStorage → Supabase, build passing  
-**Dev Server:** `npm run dev` → http://localhost:5173  
-**Deployment Target:** GitHub Pages (https://SarthakSaw111.github.io/energetic)
+**Last Updated:** Session 3 (Final)  
+**App Status:** All features working with Supabase backend  
+**Live URL:** https://SarthakSaw111.github.io/energetic/  
+**GitHub Repo:** https://github.com/SarthakSaw111/energetic  
+**Supabase Project:** https://xhcmldbpbnaacdkhfgsh.supabase.co  
+**Dev Server:** `npm run dev` → http://localhost:5173/energetic/
 
 ---
 
-## Session 3 Changes — Supabase Migration
+## Session 3 — Supabase Migration & Deployment (COMPLETE)
 
 ### What Was Done
 
@@ -28,25 +30,26 @@
 13. **Logout button** — Added to ProfilePage
 14. **Version bumped** — v2.0.0 with Supabase sync
 
-### ⚠️ CRITICAL: User Still Needs To Do These Steps
+### Completed Setup Steps
 
-#### Step 1: Run the SQL Schema in Supabase
+- ✅ SQL schema run in Supabase SQL Editor
+- ✅ Email provider enabled, email confirmation disabled
+- ✅ GitHub repo created and code pushed
+- ✅ GitHub Pages deployment via `gh-pages` (Published)
+- ✅ Supabase redirect URLs configured
+- ✅ End-to-end tested: signup → onboarding → dashboard → logout → login (data persists!)
+- ✅ Cross-device verified: same data on localhost AND production site
 
-1. Go to https://supabase.com/dashboard → Select the "energetic" project
-2. Click **SQL Editor** in the left sidebar
-3. Click **New Query**
-4. Open `supabase/schema.sql` and copy the ENTIRE contents
-5. Paste it into the SQL Editor
-6. Click **Run** (green play button)
-7. You should see "Success. No rows returned" — that means all tables + policies created
+### Known Issue: India DNS Block
 
-#### Step 2: Enable Email Auth (already default, but verify)
+Supabase is experiencing an ongoing ISP-level DNS issue in India. If you get `ERR_CONNECTION_TIMED_OUT`, change DNS to:
+- **Cloudflare**: 1.1.1.1
+- **Google**: 8.8.8.8
+- Or use a VPN
 
-1. In Supabase Dashboard → **Authentication** → **Providers**
-2. Make sure **Email** provider is enabled
-3. Optionally: Toggle off "Confirm email" for easier testing (Authentication → Settings → uncheck "Enable email confirmations")
+See: https://status.supabase.com/incidents/xmgq69x4brfk
 
-#### Step 3: (Optional) Enable GitHub OAuth
+### Optional: GitHub OAuth
 
 1. Go to https://github.com/settings/developers → **OAuth Apps** → **New OAuth App**
 2. App name: `Energetic`
@@ -56,31 +59,11 @@
 6. In Supabase Dashboard → **Authentication** → **Providers** → **GitHub**
 7. Enable it, paste Client ID and Client Secret, Save
 
-#### Step 4: Create GitHub Repo & Deploy
+### Test Account
 
-1. Go to https://github.com/new
-2. Repository name: `energetic`
-3. Public or Private (both work with Pages)
-4. Don't initialize with README (we already have code)
-5. Run these commands:
-
-```bash
-cd energetic
-git init
-git add .
-git commit -m "v2.0.0: Supabase migration + auth"
-git remote add origin https://github.com/SarthakSaw111/energetic.git
-git branch -M main
-git push -u origin main
-npm run deploy
-```
-
-6. Go to GitHub repo → **Settings** → **Pages** → Source should auto-detect `gh-pages` branch
-
-#### Step 5: Add Redirect URL to Supabase
-
-1. In Supabase Dashboard → **Authentication** → **URL Configuration**
-2. Add `https://SarthakSaw111.github.io/energetic/` to **Redirect URLs**
+- **Email:** sarthak.test@gmail.com
+- **Password:** Test@12345
+- **Profile:** Sarthak, 173cm, 49kg, Goal 65kg, Bro Coach
 
 ---
 
